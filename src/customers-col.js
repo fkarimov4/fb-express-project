@@ -15,6 +15,15 @@ function getCustomersCol() {
     .catch(console.error);
 }
 
+function getCustomer(customerId) {
+   return custRef.doc(customerId).get()
+    .then((doc) => {
+        return doc.data()
+    })
+    
+    .catch(console.error);
+}
+
 function addCustomer(customer) {
   return custRef
     .add(customer)
@@ -27,4 +36,4 @@ function updateCustomer(customerId, dataToUpdate) {
     .update(dataToUpdate)
 }
 
-module.exports = { getCustomersCol, addCustomer, updateCustomer };
+module.exports = { getCustomersCol, addCustomer, updateCustomer, getCustomer };

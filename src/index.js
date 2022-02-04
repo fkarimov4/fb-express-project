@@ -1,6 +1,6 @@
 const express = require('express')
 
-const { getCustomersCol, addCustomer, updateCustomer } = require('./customers-col')
+const { getCustomersCol, addCustomer, updateCustomer, getCustomer } = require('./customers-col')
 
 const app = express()
 app.use(express.json())
@@ -13,6 +13,11 @@ app.get('/customers', (req, res) => {
 app.post('/customers', (req, res) => {
     addCustomer(req.body)
     .then(() => res.send("Successfully added user!").status(200))
+})
+
+app.get('/customers/:customerId', (req, res) => {
+    getCustomer(req.params.customerId)
+    .then(customer => res.send(customer))
 })
 
 app.patch('/customers/:customerId', (req, res) => {
