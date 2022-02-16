@@ -14,7 +14,7 @@ function getCustomersCol() {
     })
     .catch(console.error);
 }
-
+//update
 function getCustomer(customerId) {
    return custRef.doc(customerId).get()
     .then((doc) => {
